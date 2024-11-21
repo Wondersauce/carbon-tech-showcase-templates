@@ -1,0 +1,16 @@
+{
+  "name": "chat-01",
+  "type": "registry:block",
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "\"use client\";\n\nimport { Button, ProgressBar } from \"@carbon/react\";\n\nexport default function Chat01() {\n  return (\n    <div className=\"flex flex-col gap-4 p-3\">\n      <Button>Chat 01</Button>\n      <Button>Chat 02</Button>\n      <Button>Chat 03</Button>\n      <ProgressBar label=\"Progress\" />\n    </div>\n  );\n}\n",
+      "path": "block/chat-01/chat-01.tsx",
+      "target": "components/block/chat-01/chat-01.tsx"
+    }
+  ],
+  "dependencies": [
+    "@carbon/react"
+  ]
+}
