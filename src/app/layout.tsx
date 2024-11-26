@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.scss";
-import "@carbon/styles/css/styles.css";
+import Layout from "@/components/layout/Layout";
+import "@carbon/styles/index.scss";
+// import "@carbon/styles/css/styles.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }
