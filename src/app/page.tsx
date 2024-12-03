@@ -1,5 +1,3 @@
-"use client";
-
 import Preview from "@/components/preview/Preview";
 
 export default function Home() {
