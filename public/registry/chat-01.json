@@ -1,7 +1,9 @@
 {
   "name": "chat-01",
   "type": "registry:block",
-  "registryDependencies": [],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/Wondersauce/carbon-tech-showcase-templates/refs/heads/master/public/registry/button-pill.json"
+  ],
   "files": [
     {
       "type": "registry:block",
