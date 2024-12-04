@@ -1,9 +1,9 @@
-import Preview from "@/components/preview/Preview";
+import DocsLayout from "@/components/docsLayout/DocsLayout";
 
 export default function Home() {
   return (
-    <div className="">
-      <Preview />
-    </div>
+    <DocsLayout>
+      <div>Activations Components</div>
+    </DocsLayout>
   );
 }

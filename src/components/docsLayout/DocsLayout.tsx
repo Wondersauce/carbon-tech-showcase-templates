@@ -19,9 +19,10 @@ import { Search, Notification, Switcher } from "@carbon/icons-react";
 
 const menuItems = [
   { href: "/docs", label: "Installation" },
-  { href: "/getting-started", label: "Getting Started" },
+  { href: "/docs/getting-started", label: "Getting Started" },
+  { href: "/docs/tailwind", label: "Tailwind" },
   {
-    href: "/templates",
+    href: "/docs/templates",
     label: "Templates",
     items: [
       { href: "/docs/templates", label: "Introduction" },
@@ -32,7 +33,11 @@ const menuItems = [
   },
 ];
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function DocsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <Theme theme="g10">
       <Header aria-label="IBM Platform Name">
@@ -40,7 +45,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <HeaderName href="#" prefix="IBM">
           Carbon Showcase Samples
         </HeaderName>
-        <HeaderNavigation aria-label="IBM [Platform]">
+        {/* <HeaderNavigation aria-label="IBM [Platform]">
           <HeaderMenuItem href="#">Link 1</HeaderMenuItem>
           <HeaderMenuItem href="#">Link 2</HeaderMenuItem>
           <HeaderMenuItem href="#">Link 3</HeaderMenuItem>
@@ -49,7 +54,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <HeaderMenuItem href="#two">Sub-link 2</HeaderMenuItem>
             <HeaderMenuItem href="#three">Sub-link 3</HeaderMenuItem>
           </HeaderMenu>
-        </HeaderNavigation>
+        </HeaderNavigation> */}
         <HeaderGlobalBar>
           <HeaderGlobalAction
             aria-label="Search"
@@ -110,7 +115,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </SideNavItems>
       </SideNav>
 
-      <Content id="main-content" className="prose ">
+      <Content id="main-content" className="prose !max-w-[1200px]">
         {children}
       </Content>
     </Theme>

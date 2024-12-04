@@ -1,7 +1,6 @@
+import "@carbon/styles/index.scss";
 import type { Metadata } from "next";
 import "./globals.css";
-import Layout from "@/components/layout/Layout";
-import "@carbon/styles/index.scss";
 // import "@carbon/styles/css/styles.css";
 
 export const metadata: Metadata = {
@@ -16,9 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-gray-10">
-        <Layout>{children}</Layout>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
