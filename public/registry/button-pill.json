@@ -1,0 +1,15 @@
+{
+  "name": "button-pill",
+  "type": "registry:ui",
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "import { cn } from \"@/app/lib/utils\";\nimport { Button, ButtonProps } from \"@carbon/react\";\n\ntype ButtonPillProps<T extends React.ElementType> = ButtonProps<T> & {\n  leftAlignIcon?: boolean;\n};\n\nexport default function ButtonPill<T extends React.ElementType>({\n  leftAlignIcon,\n  ...rest\n}: ButtonPillProps<T>) {\n  return (\n    <Button\n      {...(rest as ButtonProps<T>)}\n      className={cn(\"rounded-full\", rest.className, {\n        \"[&>svg]:ms-2 [&>svg]:inline-start-2 ps-16 pe-4\": leftAlignIcon,\n      })}\n    />\n  );\n}\n",
+      "path": "ui/button-pill.tsx",
+      "target": "components/ui/button-pill.tsx"
+    }
+  ],
+  "dependencies": [
+    "@carbon/react"
+  ]
+}

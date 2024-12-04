@@ -39,7 +39,7 @@ export default function DocsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Theme theme="g10">
+    <Theme theme="white">
       <Header aria-label="IBM Platform Name">
         <SkipToContent />
         <HeaderName href="#" prefix="IBM">

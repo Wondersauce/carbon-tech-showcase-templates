@@ -2,11 +2,16 @@
 
 import {
   AiGenerate,
+  ChevronLeft,
+  ChevronRight,
+  IbmWatsonDiscovery,
   RightPanelClose,
   SettingsAdjust,
+  View,
 } from "@carbon/icons-react";
 import {
   AILabel,
+  AILabelContent,
   Button,
   Column,
   Content,
@@ -18,10 +23,11 @@ import {
   HeaderName,
   HeaderNavigation,
   Stack,
-  // HeaderPanel,
   Theme,
   Tooltip,
 } from "@carbon/react";
+import ButtonPill from "@registry/ui/button-pill";
+import { ChatContainer, ChatMessage } from "./chat";
 
 export default function Chat01() {
   return (
@@ -82,8 +88,49 @@ export default function Chat01() {
                 </div>
                 <div className="h-full w-full">
                   <div className="flex items-center justify-end border-b border-solid border-gray-30 p-4">
-                    <AILabel />
+                    <AILabel>
+                      <AILabelContent>
+                        <h3 className="font-heading-04">Powered by WatsonX</h3>
+                        <p className="font-body-02">
+                          Lorem ipsum dolor sit amet consectetur. Eu dui sem
+                          mauris id et mauris nisl rutrum at. Nullam suspendisse
+                          netus in enim nec aliquam. Amet pharetra libero leo
+                          neque accumsan. Mauris pulvinar sollicitudin tempus
+                          ornare curabitur montes libero erat.
+                        </p>
+                      </AILabelContent>
+                    </AILabel>
                   </div>
+
+                  <ChatContainer>
+                    <ChatMessage
+                      title="watsonx 10:10 AM"
+                      icon={<IbmWatsonDiscovery size={24} />}
+                    >
+                      <p className="font-body-02">
+                        Based on the information provided in the documents, hail
+                        damage to your car is generally not covered under the
+                        automobile coverage for damage section. This is because
+                        hail is typically classified as a non-collision related
+                        incident. The policy specifically lists
+                        collision-related damage as something that is covered.
+                      </p>
+                    </ChatMessage>
+                    <ChatMessage
+                      alignRight
+                      title="watsonx 10:10 AM"
+                      icon={<IbmWatsonDiscovery size={24} />}
+                    >
+                      <p className="font-body-02">
+                        Based on the information provided in the documents, hail
+                        damage to your car is generally not covered under the
+                        automobile coverage for damage section. This is because
+                        hail is typically classified as a non-collision related
+                        incident. The policy specifically lists
+                        collision-related damage as something that is covered.
+                      </p>
+                    </ChatMessage>
+                  </ChatContainer>
                 </div>
               </div>
             </Column>
@@ -122,6 +169,13 @@ export default function Chat01() {
                     <h3 className="font-heading-compact-01">Sentiment</h3>
                     <p className="font-body-02">Neutral [50%]</p>
                   </div>
+                  <div className="flex justify-between">
+                    <ButtonPill renderIcon={ChevronLeft} leftAlignIcon>
+                      Preview
+                    </ButtonPill>
+                    <ButtonPill renderIcon={ChevronRight}>Next</ButtonPill>
+                  </div>
+                  <Button renderIcon={View}>View details</Button>
                 </Stack>
               </div>
             </Column>
