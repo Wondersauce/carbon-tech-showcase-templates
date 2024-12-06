@@ -1,5 +1,11 @@
 "use client";
 
+import ButtonPill from "@/registry/components/ui/button-pill";
+import {
+  ChatContainer,
+  ChatEntry,
+  ChatMessageUser,
+} from "@/registry/components/ui/chat";
 import {
   AiGenerate,
   ChevronLeft,
@@ -26,13 +32,6 @@ import {
   Theme,
   Tooltip,
 } from "@carbon/react";
-import ButtonPill from "@/registry/components/ui/button-pill";
-import {
-  ChatContainer,
-  ChatEntry,
-  ChatMessageUser,
-} from "@/registry/components/ui/chat";
-
 export default function Chat01() {
   return (
     <div className="bg-blue-10 w-full">

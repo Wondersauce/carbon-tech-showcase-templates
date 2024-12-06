@@ -1,36 +1,27 @@
+# IBM Carbon Showcases
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Project structure
 
-First, run the development server:
+The project is structured in the following way:
+
+- `/src/app`: Nextjs pages dedicated to the documentation of the project.
+- `/src/components`: React components of the application that are not part of the design system. Used for the documentation of the project.
+- `/registry`: React components of the application that are to be distributed trhough shadcn CLI.
+- `/public/registry`: Static JSON generated files that shadcn uses to download the components.
+- `/scripts`: Assorted scripts used mostly to generate the project.
+
+## Shadcn repository
+
+We are leveraging the Shadcn CLI to distribute the components of the project.
+
+All distributed components are in the `registry` folder. Within the folder `blocks` constitute larger componentes or complete pages, and `ui` are considered building blocks, such as buttons, cards, etc.
+
+To create a new component, run the following command:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run plop
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+You need to add the new component to the `/registry/registry-components.ts` file, with the appropriate configuration options.
