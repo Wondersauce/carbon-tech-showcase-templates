@@ -19,10 +19,10 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@registry/*": ["./registry/*"]
+      "@/*": ["./*"],
+      "@/registry/components/ui/*": ["./registry/ui/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/docs/tailwind/page.mdx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

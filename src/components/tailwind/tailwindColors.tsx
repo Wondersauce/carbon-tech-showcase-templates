@@ -1,4 +1,4 @@
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/lib/utils";
 import { tailwindBgColors, tailwindColorGroups } from "./classes";
 
 export default function TailwindFonts() {

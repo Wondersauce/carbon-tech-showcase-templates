@@ -26,12 +26,16 @@ import {
   Theme,
   Tooltip,
 } from "@carbon/react";
-import ButtonPill from "@registry/ui/button-pill";
-import { ChatContainer, ChatMessage } from "./chat";
+import ButtonPill from "@/registry/components/ui/button-pill";
+import {
+  ChatContainer,
+  ChatEntry,
+  ChatMessageUser,
+} from "@/registry/components/ui/chat";
 
 export default function Chat01() {
   return (
-    <div className="bg-blue-10 w-full h-screen">
+    <div className="bg-blue-10 w-full">
       <Theme theme="g10">
         <Header aria-label="IBM Platform Name">
           <HeaderName href="#" prefix="IBM">
@@ -68,13 +72,8 @@ export default function Chat01() {
           style={{ height: "calc(100vh - 47px)" }}
         >
           <Grid narrow className="h-full">
-            <Column
-              sm={4}
-              md={8}
-              lg={11}
-              className="bg-white rounded-3xl h-full"
-            >
-              <div className="h-full w-full flex ">
+            <Column sm={4} md={8} lg={11} className="bg-white rounded-3xl">
+              <div className="h-full w-full flex">
                 <div className="border-r border-solid border-gray-30">
                   <Tooltip label="Open">
                     <Button
@@ -86,7 +85,7 @@ export default function Chat01() {
                     />
                   </Tooltip>
                 </div>
-                <div className="h-full w-full">
+                <div className="flex flex-col flex-1">
                   <div className="flex items-center justify-end border-b border-solid border-gray-30 p-4">
                     <AILabel>
                       <AILabelContent>
@@ -102,39 +101,83 @@ export default function Chat01() {
                     </AILabel>
                   </div>
 
-                  <ChatContainer>
-                    <ChatMessage
-                      title="watsonx 10:10 AM"
-                      icon={<IbmWatsonDiscovery size={24} />}
-                    >
-                      <p className="font-body-02">
-                        Based on the information provided in the documents, hail
-                        damage to your car is generally not covered under the
-                        automobile coverage for damage section. This is because
-                        hail is typically classified as a non-collision related
-                        incident. The policy specifically lists
-                        collision-related damage as something that is covered.
-                      </p>
-                    </ChatMessage>
-                    <ChatMessage
-                      alignRight
-                      title="watsonx 10:10 AM"
-                      icon={<IbmWatsonDiscovery size={24} />}
-                    >
-                      <p className="font-body-02">
-                        Based on the information provided in the documents, hail
-                        damage to your car is generally not covered under the
-                        automobile coverage for damage section. This is because
-                        hail is typically classified as a non-collision related
-                        incident. The policy specifically lists
-                        collision-related damage as something that is covered.
-                      </p>
-                    </ChatMessage>
-                  </ChatContainer>
+                  <div className="flex-shrink flex-auto overflow-y-auto h-0">
+                    <ChatContainer>
+                      <ChatEntry
+                        title="watsonx 10:10 AM"
+                        icon={<IbmWatsonDiscovery size={24} />}
+                      >
+                        <h4 className="font-heading-03">
+                          What is the coverage for hail damage to my car?
+                        </h4>
+                        <p className="font-body-02">
+                          Based on the information provided in the documents,
+                          hail damage to your car is generally not covered under
+                          the automobile coverage for damage section. This is
+                          because hail is typically classified as a
+                          non-collision related incident. The policy
+                          specifically lists collision-related damage as
+                          something that is covered.
+                        </p>
+                      </ChatEntry>
+                      <ChatEntry alignRight title="You 2:12 PM">
+                        <ChatMessageUser>
+                          <p className="font-body-02">
+                            I would like to request a permit for home
+                            improvements.
+                          </p>
+                        </ChatMessageUser>
+                      </ChatEntry>
+                      <ChatEntry
+                        title="watsonx 12:10 PM"
+                        icon={<IbmWatsonDiscovery size={24} />}
+                      >
+                        <h4 className="font-heading-03">
+                          Requesting a permit for home improvements
+                        </h4>
+                        <p className="font-body-02">
+                          To request a permit for home improvements, please
+                          contact your local government office. Before you
+                          proceed, please ensure that you have all the necessary
+                          information and documents ready.
+                        </p>
+                        <div className="grid grid-cols-2 gap-4 !mt-8">
+                          {[
+                            "Explains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural language",
+                            "Explains and summarizes how your code works in natural language",
+                            "Explains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural language",
+                            "Explains and summarizes how your code works in natural language",
+                          ].map((item, index) => (
+                            <div
+                              key={index}
+                              className="bg-gray-10 p-4 rounded-2xl"
+                            >
+                              <p className="font-body-02">{item}</p>
+                              <div className="flex justify-end">
+                                <ButtonPill
+                                  renderIcon={ChevronRight}
+                                  hasIconOnly
+                                >
+                                  View
+                                </ButtonPill>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </ChatEntry>
+                    </ChatContainer>
+                  </div>
+
+                  <div className="bg-red-50 h-10">hello</div>
                 </div>
               </div>
             </Column>
-            <Column sm={4} md={8} lg={5} className="bg-white rounded-3xl">
+            <Column
+              sm={4}
+              md={8}
+              lg={5}
+              className="bg-white rounded-3xl overflow-y-auto"
+            >
               <div className="p-6">
                 <h2 className="font-fluid-heading-04">
                   Conversational Intelligence
