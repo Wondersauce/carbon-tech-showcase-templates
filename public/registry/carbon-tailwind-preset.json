@@ -10,6 +10,7 @@
     }
   ],
   "dependencies": [
-    "@carbon/react"
+    "@carbon/react",
+    "@carbon/icons-react"
   ]
 }

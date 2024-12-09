@@ -17,3 +17,12 @@ Follow the instructions in the [Carbon Tailwind](https://carbon.sage.com/docs/ta
 
 If you are working on a Next.js project, you can only use turbopack importing the .css file, if you want to work with the .scss file you need to remove turbopack
 
+
+### Adding Styles
+
+Make sure you import the Carbon Styles before tailwind so the overrides work without using important
+
+```tsx
+import "@carbon/styles/css/styles.css";
+import "./globals.css";
+```

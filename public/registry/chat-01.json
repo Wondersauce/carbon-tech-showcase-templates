@@ -10,7 +10,8 @@
     }
   ],
   "dependencies": [
-    "@carbon/react"
+    "@carbon/react",
+    "@carbon/icons-react"
   ],
   "registryDependencies": [
     "https://tech-showcase-efd2e1efb1e7.herokuapp.com/registry/button-pill.json",
