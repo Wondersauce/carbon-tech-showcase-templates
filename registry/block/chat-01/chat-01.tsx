@@ -12,8 +12,7 @@ import {
   ChevronRight,
   IbmWatsonDiscovery,
   RightPanelClose,
-  SettingsAdjust,
-  View,
+  SettingsAdjust
 } from "@carbon/icons-react";
 import {
   AILabel,
@@ -166,8 +165,9 @@ export default function Chat01() {
                       </ChatEntry>
                     </ChatContainer>
                   </div>
-
-                  <div className="bg-red-50 h-10">hello</div>
+                  <div className="h-10 border-t border-solid border-gray-30">
+                    Bottom chat
+                  </div>
                 </div>
               </div>
             </Column>
@@ -217,7 +217,6 @@ export default function Chat01() {
                     </ButtonPill>
                     <ButtonPill renderIcon={ChevronRight}>Next</ButtonPill>
                   </div>
-                  <Button renderIcon={View}>View details</Button>
                 </Stack>
               </div>
             </Column>

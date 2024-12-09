@@ -2,7 +2,7 @@ import { promises as fs } from "fs";
 import { exec } from "node:child_process";
 import path from "path";
 import { fileURLToPath } from "url";
-import { fontsUtilities, carbonPreset } from "../registry/lib/carbon.tailwind-preset";
+import { fontsUtilities, carbonPreset } from "../registry/lib/carbon-tailwind-preset";
 
 const FILE_PATH = "../src/components/tailwind/classes.ts";
 

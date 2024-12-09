@@ -14,6 +14,7 @@ const FolderToComponentTypeMap = {
   component: "registry:component",
   hooks: "registry:hook",
   ui: "registry:ui",
+  lib: "registry:lib",
 };
 
 async function writeFileRecursive(filePath: string, data: string) {
@@ -71,7 +72,6 @@ const main = async () => {
     );
     const jsonPath = `${PUBLIC_FOLDER_BASE_PATH}/${component.name}.json`;
     await writeFileRecursive(jsonPath, json);
-    console.log(json);
   }
 };
 

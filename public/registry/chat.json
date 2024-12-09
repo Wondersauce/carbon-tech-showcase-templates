@@ -11,5 +11,8 @@
   ],
   "dependencies": [
     "@carbon/react"
+  ],
+  "registryDependencies": [
+    "https://tech-showcase-efd2e1efb1e7.herokuapp.com/registry/carbon-tailwind-preset.json"
   ]
 }

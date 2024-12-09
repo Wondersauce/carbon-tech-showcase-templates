@@ -19,17 +19,11 @@ import { Search, Notification, Switcher } from "@carbon/icons-react";
 
 const menuItems = [
   { href: "/docs", label: "Installation" },
-  { href: "/docs/getting-started", label: "Getting Started" },
   { href: "/docs/tailwind", label: "Tailwind" },
   {
     href: "/docs/templates",
     label: "Templates",
-    items: [
-      { href: "/docs/templates", label: "Introduction" },
-      { href: "/docs/templates/chat", label: "Chat" },
-      { href: "/docs/templates/ai", label: "AI" },
-      { href: "/docs/templates/controls", label: "Controls" },
-    ],
+    items: [{ href: "/docs/templates/chat", label: "Chat" }],
   },
 ];
 
