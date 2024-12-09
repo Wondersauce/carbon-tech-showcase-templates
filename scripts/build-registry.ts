@@ -55,8 +55,8 @@ const getComponentFiles = async (files: File[]) => {
 
 const main = async () => {
   // make a json file and put it in public folder
-  for (let i = 0; i < registryComponents.length; i++) {
-    const component = registryComponents[i];
+  for (const element of registryComponents) {
+    const component = element;
     const files = component.files;
     if (!files) throw new Error("No files found for component");
 
