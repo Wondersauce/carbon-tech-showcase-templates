@@ -26,31 +26,15 @@ To create a new component, run the following command:
 npm run registry:new
 ```
 
-Follow the prompts to customize the new component.
+Select the [component-type] and then enter the [component-name] for the new registry.
 
-This will automatically generate the required files in a subfolder inside the `registry` directory. The subfolder will include:
+This will automatically two files inside the `registry` folder:
 
-1. **Component Definition:** The main `.tsx` file for the component.
-2. **Index File:** An `index.ts` file for auto imports.
-3. **Registry Configuration:** A `registry-config.ts` file.
+- `[component-type][component-name].tsx`: React component
+- `config/[component-name].ts`: Configuration file
 
-#### `registry-config.ts`
-
-Update the `registry-config.ts` file with:
+Update the `config/[component-name].ts` file with:
 
 - **`dependencies`:** Add required Node.js dependencies in this array.
 - **`registryDependencies`:** Add registry-specific dependencies in this array.  
   **Note:** `BASE_URL` is exposed by default and only needs to be included when adding `registryDependencies`.
-
-### Example
-
-```typescript
-import { RegistryEntry, BASE_URL } from "../../schema";
-
-export const registryEntry: RegistryEntry = {
-  name: "my-component",
-  type: "registry:ui",
-  files: ["ui/my-component/my-component.tsx"],
-  dependencies: ["@carbon/react"],
-  registryDependencies: [`${BASE_URL}/button-pill.json`],
-};
