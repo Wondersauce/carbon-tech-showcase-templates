@@ -1,5 +1,8 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import {
+  Grid,
+  Column,
   Content,
   Header,
   HeaderGlobalAction,
@@ -9,6 +12,7 @@ import {
   HeaderName,
   HeaderNavigation,
   SideNav,
+  HeaderMenuButton,
   SideNavItems,
   SideNavMenu,
   SideNavMenuItem,
@@ -32,23 +36,30 @@ export default function DocsLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [isSideNavExpanded, setIsSideNavExpanded] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  const onClickSideNavExpand = () => {
+    setIsSideNavExpanded((prev) => !prev);
+  };
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <Theme theme="white">
       <Header aria-label="IBM Platform Name">
         <SkipToContent />
+        <HeaderMenuButton
+          aria-label={isSideNavExpanded ? "Close menu" : "Open menu"}
+          onClick={onClickSideNavExpand}
+          isActive={isSideNavExpanded}
+          aria-expanded={isSideNavExpanded}
+        />
         <HeaderName href="#" prefix="IBM">
-          Carbon Showcase Samples
+          <div className="hidden lg:block">Carbon Showcase Samples</div>
         </HeaderName>
-        {/* <HeaderNavigation aria-label="IBM [Platform]">
-          <HeaderMenuItem href="#">Link 1</HeaderMenuItem>
-          <HeaderMenuItem href="#">Link 2</HeaderMenuItem>
-          <HeaderMenuItem href="#">Link 3</HeaderMenuItem>
-          <HeaderMenu aria-label="Link 4" menuLinkName="Link 4">
-            <HeaderMenuItem href="#one">Sub-link 1</HeaderMenuItem>
-            <HeaderMenuItem href="#two">Sub-link 2</HeaderMenuItem>
-            <HeaderMenuItem href="#three">Sub-link 3</HeaderMenuItem>
-          </HeaderMenu>
-        </HeaderNavigation> */}
         <HeaderGlobalBar>
           <HeaderGlobalAction
             aria-label="Search"
@@ -80,37 +91,56 @@ export default function DocsLayout({
             </HeaderMenu>
           </HeaderNavigation>
         </HeaderGlobalBar>
+        {isMounted && (
+          <SideNav
+            aria-label="Side navigation"
+            expanded={isSideNavExpanded}
+            tabIndex={-1}
+          >
+            <SideNavItems>
+              {menuItems.map((item) => {
+                if (item.items) {
+                  return (
+                    <SideNavMenu
+                      key={item.href}
+                      title={item.label}
+                      defaultExpanded
+                    >
+                      {item.items.map((subItem) => (
+                        <SideNavMenuItem key={subItem.href} href={subItem.href}>
+                          {subItem.label}
+                        </SideNavMenuItem>
+                      ))}
+                    </SideNavMenu>
+                  );
+                }
+                return (
+                  <SideNavMenuItem key={item.href} href={item.href}>
+                    {item.label}
+                  </SideNavMenuItem>
+                );
+              })}
+            </SideNavItems>
+          </SideNav>
+        )}
       </Header>
-      <SideNav
-        isFixedNav
-        expanded={true}
-        isChildOfHeader={false}
-        aria-label="Side navigation"
-      >
-        <SideNavItems>
-          {menuItems.map((item) => {
-            if (item.items) {
-              return (
-                <SideNavMenu key={item.href} title={item.label} defaultExpanded>
-                  {item.items.map((subItem) => (
-                    <SideNavMenuItem key={subItem.href} href={subItem.href}>
-                      {subItem.label}
-                    </SideNavMenuItem>
-                  ))}
-                </SideNavMenu>
-              );
-            }
-            return (
-              <SideNavMenuItem key={item.href} href={item.href}>
-                {item.label}
-              </SideNavMenuItem>
-            );
-          })}
-        </SideNavItems>
-      </SideNav>
 
-      <Content id="main-content" className="prose !max-w-[1200px]">
-        {children}
+      <Content
+        id="main-content"
+        aria-hidden="false"
+        className="overflow-hidden"
+      >
+        <Grid>
+          <Column
+            sm={4}
+            md={8}
+            lg={{ span: 12, offset: 4 }}
+            xlg={{ span: 13, offset: 3 }}
+            className="prose max-w-full"
+          >
+            {children}
+          </Column>
+        </Grid>
       </Content>
     </Theme>
   );
