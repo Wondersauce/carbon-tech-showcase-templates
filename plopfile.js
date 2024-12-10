@@ -13,6 +13,7 @@ const registryItemTypes = [
 
 const templateLocation = "./templates";
 const registryPartialsLocation = "./registry/config";
+const demoLocation = "./src/app/demos";
 
 const generator = (plop) => {
   plop.setGenerator("registry", {
@@ -44,6 +45,11 @@ const generator = (plop) => {
         type: "add",
         path: `${location}/{{kebabCase name}}.tsx`,
         templateFile: `${templateLocation}/component.tsx.hbs`,
+      });
+      actions.push({
+        type: "add",
+        path: `${demoLocation}/{{kebabCase name}}/page.tsx`,
+        templateFile: `${templateLocation}/page.tsx.hbs`,
       });
 
       return actions;
