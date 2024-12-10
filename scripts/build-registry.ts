@@ -1,8 +1,9 @@
+// import { registryComponents } from "../registry";
+import { pathToFileURL } from "url";
 import { promises as fs } from "fs";
-import path from "path";
-import { z } from "zod";
-import { registryComponents } from "../registry";
 import { registryItemFileSchema } from "../registry/schema";
+import { z } from "zod";
+import path from "path";
 
 const REGISTRY_BASE_PATH = "registry";
 const PUBLIC_FOLDER_BASE_PATH = "public/registry";
@@ -55,6 +56,7 @@ const getComponentFiles = async (files: File[]) => {
 
 const main = async () => {
   // make a json file and put it in public folder
+  const registryComponents = await collectConfigFiles();
   for (const element of registryComponents) {
     const component = element;
     const files = component.files;
@@ -73,6 +75,47 @@ const main = async () => {
     const jsonPath = `${PUBLIC_FOLDER_BASE_PATH}/${component.name}.json`;
     await writeFileRecursive(jsonPath, json);
   }
+};
+
+async function findConfigFiles(dir) {
+  const files = await fs.readdir(dir, { withFileTypes: true });
+  const configFiles = [];
+
+  for (const file of files) {
+    const filePath = path.join(dir, file.name);
+
+    if (file.isDirectory()) {
+      configFiles.push(...(await findConfigFiles(filePath)));
+    } else if (file.isFile() && file.name === "config.ts") {
+      configFiles.push(filePath);
+    }
+  }
+
+  return configFiles;
+}
+
+const collectConfigFiles = async () => {
+  const registryArray = [];
+
+  const configFiles = await findConfigFiles(REGISTRY_BASE_PATH);
+
+  for (const configFilePath of configFiles) {
+    console.log(configFilePath);
+    try {
+      const fileUrl = pathToFileURL(path.resolve(configFilePath)).href;
+      const { ui } = await import(fileUrl);
+
+      if (ui) {
+        registryArray.push(ui);
+        console.log(ui);
+      }
+    } catch (error) {
+      console.error(`Error reading file`);
+      console.error(error);
+    }
+  }
+
+  return registryArray;
 };
 
 main()

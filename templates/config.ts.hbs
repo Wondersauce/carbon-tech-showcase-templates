@@ -1,0 +1,11 @@
+import { RegistryEntry } from "../../schema";
+const BASE_URL =
+  "https://raw.githubusercontent.com/Wondersauce/carbon-tech-showcase-templates/refs/heads/master/public/registry";
+
+export const ui: RegistryEntry = {
+  name: "{{kebabCase name}}",
+  type: "{{type}}",
+  registryDependencies: [],
+  files: ["{{baseType}}/{{kebabCase name}}/{{kebabCase name}}.tsx"],
+  dependencies: ["@carbon/react"],
+};

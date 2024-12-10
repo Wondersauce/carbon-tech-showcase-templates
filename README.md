@@ -16,7 +16,7 @@ The project is structured in the following way:
 
 We are leveraging the Shadcn CLI to distribute the components of the project.
 
-All distributed components are in the `registry` folder. Within the folder `blocks` constitute larger componentes or complete pages, and `ui` are considered building blocks, such as buttons, cards, etc.
+All distributed components are in the `registry` folder. Within the folder `blocks` constitute larger components or complete pages, and `ui` are considered building blocks, such as buttons, cards, etc.
 
 To create a new component, run the following command:
 
