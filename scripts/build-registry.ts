@@ -77,7 +77,7 @@ const main = async () => {
   }
 };
 
-async function findConfigFiles(dir) {
+async function findConfigFiles(dir: string): Promise<string[]> {
   const files = await fs.readdir(dir, { withFileTypes: true });
   const configFiles = [];
 
@@ -86,7 +86,7 @@ async function findConfigFiles(dir) {
 
     if (file.isDirectory()) {
       configFiles.push(...(await findConfigFiles(filePath)));
-    } else if (file.isFile() && file.name === "config.ts") {
+    } else if (file.isFile() && file.name === "registry-config.ts") {
       configFiles.push(filePath);
     }
   }
@@ -103,11 +103,11 @@ const collectConfigFiles = async () => {
     console.log(configFilePath);
     try {
       const fileUrl = pathToFileURL(path.resolve(configFilePath)).href;
-      const { ui } = await import(fileUrl);
+      const { registryEntry } = await import(fileUrl);
 
-      if (ui) {
-        registryArray.push(ui);
-        console.log(ui);
+      if (registryEntry) {
+        registryArray.push(registryEntry);
+        console.log(registryEntry);
       }
     } catch (error) {
       console.error(`Error reading file`);

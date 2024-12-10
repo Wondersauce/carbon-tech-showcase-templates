@@ -8,9 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "registry:build": "rm -rf public/registry && tsx ./scripts/build-registry.ts",
     "tailwind:build": "tsx ./scripts/generate-tailwind.ts",
-    "registry": "plop "
+    "registry:build": "rm -rf public/registry && tsx ./scripts/build-registry.ts",
+    "registry:new": "plop"
   },
   "dependencies": {
     "@carbon/icons-react": "^11.53.0",

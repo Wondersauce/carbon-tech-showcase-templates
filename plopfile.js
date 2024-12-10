@@ -1,12 +1,17 @@
-const templateLocation = "./templates";
+//Item types should match the registryItemTypes in ./registry/schema
+const registryItemTypes = [
+  "registry:block",
+  "registry:component",
+  "registry:example",
+  "registry:hook",
+  "registry:lib",
+  "registry:page",
+  "registry:style",
+  "registry:theme",
+  "registry:ui",
+];
 
-const locationsMap = {
-  "registry:block": `./registry/block`,
-  "registry:component": `./registry/component`,
-  "registry:hook": `./registry/hook`,
-  "registry:ui": `./registry/ui`,
-  "registry:lib": `./registry/lib`,
-};
+const templateLocation = "./templates";
 
 const generator = (plop) => {
   plop.setGenerator("registry", {
@@ -16,13 +21,7 @@ const generator = (plop) => {
         type: "list",
         name: "type",
         message: "Select the type of registry:",
-        choices: [
-          "registry:block",
-          "registry:component",
-          "registry:hook",
-          "registry:ui",
-          "registry:lib",
-        ],
+        choices: registryItemTypes,
       },
       {
         type: "input",
@@ -31,20 +30,24 @@ const generator = (plop) => {
       },
     ],
     actions: function (data) {
+      const location = `registry/${data.type.split(":")[1]}`;
       const actions = [];
       data.baseType = data.type.split(":")[1];
 
       actions.push({
         type: "add",
-        path: `${
-          locationsMap[data.type]
-        }/{{kebabCase name}}/{{kebabCase name}}.tsx`,
-        templateFile: `${templateLocation}/component.tsx.hbs`,
+        path: `${location}/{{kebabCase name}}/index.ts`,
+        templateFile: `${templateLocation}/index.ts.hbs`,
       });
       actions.push({
         type: "add",
-        path: `${locationsMap[data.type]}/{{kebabCase name}}/config.ts`,
-        templateFile: `${templateLocation}/config.ts.hbs`,
+        path: `${location}/{{kebabCase name}}/registry-config.ts`,
+        templateFile: `${templateLocation}/registry-config.ts.hbs`,
+      });
+      actions.push({
+        type: "add",
+        path: `${location}/{{kebabCase name}}/{{kebabCase name}}.tsx`,
+        templateFile: `${templateLocation}/component.tsx.hbs`,
       });
 
       return actions;

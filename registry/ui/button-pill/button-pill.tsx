@@ -5,7 +5,7 @@ type ButtonPillProps<T extends React.ElementType> = ButtonProps<T> & {
   leftAlignIcon?: boolean;
 };
 
-export default function ButtonPill<T extends React.ElementType>({
+export function ButtonPill<T extends React.ElementType>({
   leftAlignIcon,
   ...rest
 }: ButtonPillProps<T>) {

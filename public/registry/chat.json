@@ -5,8 +5,8 @@
     {
       "type": "registry:ui",
       "content": "import { cn } from \"@/lib/utils\";\r\n\r\ninterface ChatContainerProps {\r\n  children: React.ReactNode;\r\n  className?: string;\r\n}\r\nexport function ChatContainer({ children, className }: ChatContainerProps) {\r\n  return <div className={cn(\" overflow-y-aut\", className)}>{children}</div>;\r\n}\r\n\r\ninterface ChatEntryProps {\r\n  children: React.ReactNode;\r\n  icon?: React.ReactNode;\r\n  title?: React.ReactNode;\r\n  alignRight?: boolean;\r\n  className?: string;\r\n}\r\nexport function ChatEntry({\r\n  children,\r\n  icon,\r\n  title,\r\n  alignRight,\r\n  className,\r\n}: ChatEntryProps) {\r\n  return (\r\n    <div\r\n      className={cn(\"p-9\", className, {\r\n        \"ms-20\": alignRight,\r\n        \"me-20\": !alignRight,\r\n      })}\r\n    >\r\n      <div\r\n        className={cn(\"flex items-center gap-2 font-label-02 mb-2\", {\r\n          \"flex-row-reverse\": alignRight,\r\n        })}\r\n      >\r\n        {icon}\r\n        {title}\r\n      </div>\r\n      <div\r\n        className={cn(\"font-body-02 space-y-2 flex flex-col\", {\r\n          \"text-right items-end\": alignRight,\r\n        })}\r\n      >\r\n        {children}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n\r\ninterface ChatMessageUserProps {\r\n  children: React.ReactNode;\r\n  className?: string;\r\n}\r\nexport function ChatMessageUser({ children, className }: ChatMessageUserProps) {\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"bg-blue-20 p-4 rounded-2xl rounded-tr-none w-fit\",\r\n        className\r\n      )}\r\n    >\r\n      {children}\r\n    </div>\r\n  );\r\n}\r\n",
-      "path": "ui/chat.tsx",
-      "target": "components/ui/chat.tsx"
+      "path": "ui/chat/chat.tsx",
+      "target": "components/ui/chat/chat.tsx"
     }
   ],
   "dependencies": [

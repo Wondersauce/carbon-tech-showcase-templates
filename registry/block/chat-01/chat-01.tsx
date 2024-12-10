@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonPill from "@/registry/components/ui/button-pill";
+import { ButtonPill } from "@/registry/components/ui/button-pill";
 import {
   ChatContainer,
   ChatEntry,
@@ -12,7 +12,7 @@ import {
   ChevronRight,
   IbmWatsonDiscovery,
   RightPanelClose,
-  SettingsAdjust
+  SettingsAdjust,
 } from "@carbon/icons-react";
 import {
   AILabel,
