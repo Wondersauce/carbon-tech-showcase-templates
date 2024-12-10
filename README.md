@@ -38,3 +38,5 @@ Update the `config/[component-name].ts` file with:
 - **`dependencies`:** Add required Node.js dependencies in this array.
 - **`registryDependencies`:** Add registry-specific dependencies in this array.  
   **Note:** `BASE_URL` is exposed by default and only needs to be included when adding `registryDependencies`.
+
+Pages for Demos and Documentation are automatically generated as well.

@@ -14,6 +14,7 @@ const registryItemTypes = [
 const templateLocation = "./templates";
 const registryPartialsLocation = "./registry/config";
 const demoLocation = "./src/app/demos";
+const docsLocation = "./src/app/docs/templates";
 
 const generator = (plop) => {
   plop.setGenerator("registry", {
@@ -49,7 +50,20 @@ const generator = (plop) => {
       actions.push({
         type: "add",
         path: `${demoLocation}/{{kebabCase name}}/page.tsx`,
-        templateFile: `${templateLocation}/page.tsx.hbs`,
+        templateFile: `${templateLocation}/demos-page.tsx.hbs`,
+      });
+
+      actions.push({
+        type: "add",
+        path: `${docsLocation}/{{kebabCase name}}/page.mdx`,
+        templateFile: `${templateLocation}/templates-page.mdx.hbs`,
+      });
+      
+      actions.push((answers) => {
+        const kC = plop.getHelper("kebabCase");
+        const componentName = kC(answers.name);
+        console.log(`\nDemo: http://localhost:3000/demos/${componentName}`);
+        console.log(`Docs: http://localhost:3000/docs/templates/${componentName}\n`);
       });
 
       return actions;
