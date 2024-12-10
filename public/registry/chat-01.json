@@ -14,8 +14,8 @@
     "@carbon/icons-react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/registry/button-pill.json",
-    "http://localhost:3000/registry/chat.json",
-    "http://localhost:3000/registry/carbon-tailwind-preset.json"
+    "https://tech-showcase-efd2e1efb1e7.herokuapp.com/registry/button-pill.json",
+    "https://tech-showcase-efd2e1efb1e7.herokuapp.com/registry/chat.json",
+    "https://tech-showcase-efd2e1efb1e7.herokuapp.com/registry/carbon-tailwind-preset.json"
   ]
 }
