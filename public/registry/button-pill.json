@@ -4,9 +4,9 @@
   "files": [
     {
       "type": "registry:ui",
-      "content": "import { cn } from \"@/lib/utils\";\r\nimport { Button, ButtonProps } from \"@carbon/react\";\r\n\r\ntype ButtonPillProps<T extends React.ElementType> = ButtonProps<T> & {\r\n  leftAlignIcon?: boolean;\r\n};\r\n\r\nexport default function ButtonPill<T extends React.ElementType>({\r\n  leftAlignIcon,\r\n  ...rest\r\n}: ButtonPillProps<T>) {\r\n  return (\r\n    <Button\r\n      {...(rest as ButtonProps<T>)}\r\n      className={cn(\"rounded-full\", rest.className, {\r\n        \"[&>svg]:ms-2 [&>svg]:inline-start-2 ps-16 pe-4\": leftAlignIcon,\r\n      })}\r\n    />\r\n  );\r\n}\r\n",
-      "path": "ui/button-pill/button-pill.tsx",
-      "target": "components/ui/button-pill/button-pill.tsx"
+      "content": "import { cn } from \"@/lib/utils\";\r\nimport { Button, ButtonProps } from \"@carbon/react\";\r\n\r\ntype ButtonPillProps<T extends React.ElementType> = ButtonProps<T> & {\r\n  leftAlignIcon?: boolean;\r\n};\r\n\r\nexport function ButtonPill<T extends React.ElementType>({\r\n  leftAlignIcon,\r\n  ...rest\r\n}: ButtonPillProps<T>) {\r\n  return (\r\n    <Button\r\n      {...(rest as ButtonProps<T>)}\r\n      className={cn(\"rounded-full\", rest.className, {\r\n        \"[&>svg]:ms-2 [&>svg]:inline-start-2 ps-16 pe-4\": leftAlignIcon,\r\n      })}\r\n    />\r\n  );\r\n}\r\n",
+      "path": "ui/button-pill.tsx",
+      "target": "components/ui/button-pill.tsx"
     }
   ],
   "dependencies": [
@@ -14,6 +14,6 @@
     "@carbon/icons-react"
   ],
   "registryDependencies": [
-    "https://tech-showcase-efd2e1efb1e7.herokuapp.com/registry/carbon-tailwind-preset.json"
+    "http://localhost:3000/registry/carbon-tailwind-preset.json"
   ]
 }

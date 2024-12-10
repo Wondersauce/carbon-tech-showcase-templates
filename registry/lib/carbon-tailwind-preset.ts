@@ -1,8 +1,8 @@
+import plugin from "tailwindcss/plugin";
 // @ts-expect-error - No type definitions unavailable for @carbon/colors
 import * as colors from "@carbon/colors";
 // @ts-expect-error - No type definitions unavailable for @carbon/type
 import * as type from "@carbon/type";
-import plugin from "tailwindcss/plugin";
 
 type CarbonStyles = Record<
   string,

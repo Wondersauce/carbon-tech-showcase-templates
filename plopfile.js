@@ -12,6 +12,7 @@ const registryItemTypes = [
 ];
 
 const templateLocation = "./templates";
+const registryPartialsLocation = "./registry/config";
 
 const generator = (plop) => {
   plop.setGenerator("registry", {
@@ -36,17 +37,12 @@ const generator = (plop) => {
 
       actions.push({
         type: "add",
-        path: `${location}/{{kebabCase name}}/index.ts`,
-        templateFile: `${templateLocation}/index.ts.hbs`,
-      });
-      actions.push({
-        type: "add",
-        path: `${location}/{{kebabCase name}}/registry-config.ts`,
+        path: `${registryPartialsLocation}/{{kebabCase name}}.ts`,
         templateFile: `${templateLocation}/registry-config.ts.hbs`,
       });
       actions.push({
         type: "add",
-        path: `${location}/{{kebabCase name}}/{{kebabCase name}}.tsx`,
+        path: `${location}/{{kebabCase name}}.tsx`,
         templateFile: `${templateLocation}/component.tsx.hbs`,
       });
 

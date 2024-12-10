@@ -92,4 +92,4 @@ export type Block = z.infer<typeof blockSchema>;
 
 export type BlockChunk = z.infer<typeof blockChunkSchema>;
 
-export const BASE_URL = process.env.NEXT_PUBLIC_REGISTRY_URL;
+export const BASE_URL = process.env.NEXT_PUBLIC_REGISTRY_URL ?? "http://localhost:3000/registry";

@@ -1,4 +1,3 @@
-// import { registryComponents } from "../registry";
 import { pathToFileURL } from "url";
 import { promises as fs } from "fs";
 import { registryItemFileSchema } from "../registry/schema";
@@ -6,6 +5,7 @@ import { z } from "zod";
 import path from "path";
 
 const REGISTRY_BASE_PATH = "registry";
+const REGISTRY_CONFIG = "config";
 const PUBLIC_FOLDER_BASE_PATH = "public/registry";
 const COMPONENT_FOLDER_PATH = "components";
 
@@ -50,8 +50,30 @@ const getComponentFiles = async (files: File[]) => {
     }
   });
   const filesArray = await Promise.all(filesArrayPromises);
-
   return filesArray;
+};
+
+const collectConfigFiles = async () => {
+  const registryArray = [];
+  const configDir = path.join(REGISTRY_BASE_PATH, REGISTRY_CONFIG);
+  const files = await fs.readdir(configDir, { withFileTypes: true });
+
+  for (const file of files) {
+    const configFilePath = path.join(configDir, file.name);
+    try {
+      const fileUrl = pathToFileURL(path.resolve(configFilePath)).href;
+      const { registryEntry } = await import(fileUrl);
+
+      if (registryEntry) {
+        registryArray.push(registryEntry);
+      }
+    } catch (error) {
+      console.error(`Error reading config file: ${configFilePath}`);
+      console.error(error);
+    }
+  }
+
+  return registryArray;
 };
 
 const main = async () => {
@@ -75,47 +97,6 @@ const main = async () => {
     const jsonPath = `${PUBLIC_FOLDER_BASE_PATH}/${component.name}.json`;
     await writeFileRecursive(jsonPath, json);
   }
-};
-
-async function findConfigFiles(dir: string): Promise<string[]> {
-  const files = await fs.readdir(dir, { withFileTypes: true });
-  const configFiles = [];
-
-  for (const file of files) {
-    const filePath = path.join(dir, file.name);
-
-    if (file.isDirectory()) {
-      configFiles.push(...(await findConfigFiles(filePath)));
-    } else if (file.isFile() && file.name === "registry-config.ts") {
-      configFiles.push(filePath);
-    }
-  }
-
-  return configFiles;
-}
-
-const collectConfigFiles = async () => {
-  const registryArray = [];
-
-  const configFiles = await findConfigFiles(REGISTRY_BASE_PATH);
-
-  for (const configFilePath of configFiles) {
-    console.log(configFilePath);
-    try {
-      const fileUrl = pathToFileURL(path.resolve(configFilePath)).href;
-      const { registryEntry } = await import(fileUrl);
-
-      if (registryEntry) {
-        registryArray.push(registryEntry);
-        console.log(registryEntry);
-      }
-    } catch (error) {
-      console.error(`Error reading file`);
-      console.error(error);
-    }
-  }
-
-  return registryArray;
 };
 
 main()
