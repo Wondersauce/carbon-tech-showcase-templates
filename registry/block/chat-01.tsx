@@ -1,11 +1,5 @@
-'use client';
+"use client"
 
-import { ButtonPill } from '@/registry/components/ui/button-pill';
-import {
-  ChatContainer,
-  ChatEntry,
-  ChatMessageUser,
-} from '@/registry/components/ui/chat';
 import {
   AiGenerate,
   ChevronLeft,
@@ -13,7 +7,7 @@ import {
   IbmWatsonDiscovery,
   RightPanelClose,
   SettingsAdjust,
-} from '@carbon/icons-react';
+} from "@carbon/icons-react"
 import {
   AILabel,
   AILabelContent,
@@ -30,7 +24,15 @@ import {
   Stack,
   Theme,
   Tooltip,
-} from '@carbon/react';
+} from "@carbon/react"
+
+import { ButtonPill } from "@/registry/components/ui/button-pill"
+import {
+  ChatContainer,
+  ChatEntry,
+  ChatMessageUser,
+} from "@/registry/components/ui/chat"
+
 export default function Chat01() {
   return (
     <div className="w-full bg-blue-10">
@@ -67,7 +69,7 @@ export default function Chat01() {
         <Content
           id="main-content"
           className="bg-blue-20"
-          style={{ height: 'calc(100vh - 47px)' }}
+          style={{ height: "calc(100vh - 47px)" }}
         >
           <Grid narrow className="h-full">
             <Column sm={4} md={8} lg={11} className="rounded-3xl bg-white">
@@ -141,10 +143,10 @@ export default function Chat01() {
                         </p>
                         <div className="!mt-8 grid grid-cols-2 gap-4">
                           {[
-                            'Explains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural language',
-                            'Explains and summarizes how your code works in natural language',
-                            'Explains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural language',
-                            'Explains and summarizes how your code works in natural language',
+                            "Explains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural language",
+                            "Explains and summarizes how your code works in natural language",
+                            "Explains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural language",
+                            "Explains and summarizes how your code works in natural language",
                           ].map((item, index) => (
                             <div
                               key={index}
@@ -224,5 +226,5 @@ export default function Chat01() {
         </Content>
       </Theme>
     </div>
-  );
+  )
 }
