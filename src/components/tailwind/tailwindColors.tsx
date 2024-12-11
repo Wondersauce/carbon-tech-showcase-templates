@@ -1,5 +1,6 @@
-import { cn } from "@/lib/utils";
-import { tailwindBgColors, tailwindColorGroups } from "./classes";
+import { cn } from "@/lib/utils"
+
+import { tailwindBgColors, tailwindColorGroups } from "./classes"
 
 export default function TailwindFonts() {
   return (
@@ -25,5 +26,5 @@ export default function TailwindFonts() {
         ))}
       </div>
     </>
-  );
+  )
 }

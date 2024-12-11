@@ -1,8 +1,8 @@
-import plugin from "tailwindcss/plugin";
 // @ts-expect-error - No type definitions unavailable for @carbon/colors
-import * as colors from "@carbon/colors";
+import * as colors from "@carbon/colors"
 // @ts-expect-error - No type definitions unavailable for @carbon/type
-import * as type from "@carbon/type";
+import * as type from "@carbon/type"
+import plugin from "tailwindcss/plugin"
 
 type CarbonStyles = Record<
   string,
@@ -10,29 +10,29 @@ type CarbonStyles = Record<
     breakpoints?: Record<
       string,
       {
-        [key: string]: string;
+        [key: string]: string
       }
-    >;
+    >
   }
->;
+>
 
 export const camelToDash = (str: string): string => {
   return str
     .replace(/([A-Z])|(\d+)/g, "-$&")
     .toLowerCase()
-    .replace(/^-/, ""); // Remove leading dash if present
-};
+    .replace(/^-/, "") // Remove leading dash if present
+}
 
 export const fontsUtilities = () => {
-  const styles = type.styles as CarbonStyles;
+  const styles = type.styles as CarbonStyles
 
   const utilities: Record<
     string,
     string | Record<string, Record<string, string> | string>
-  > = {};
+  > = {}
   Object.entries(styles).forEach(([key, value]) => {
-    const dashKey = camelToDash(key);
-    const { breakpoints, ...rest } = value;
+    const dashKey = camelToDash(key)
+    const { breakpoints, ...rest } = value
 
     utilities[`.font-${dashKey}`] = {
       ...rest,
@@ -42,14 +42,14 @@ export const fontsUtilities = () => {
       ...(breakpoints?.lg && {
         "@screen lg": breakpoints.lg,
       }),
-    };
-  });
+    }
+  })
 
-  return utilities;
-};
+  return utilities
+}
 
 const typePlugin = plugin(({ addUtilities, matchUtilities, theme }) => {
-  const utilities = fontsUtilities();
+  const utilities = fontsUtilities()
 
   matchUtilities(
     {
@@ -64,7 +64,7 @@ const typePlugin = plugin(({ addUtilities, matchUtilities, theme }) => {
       supportsNegativeValues: true,
       values: theme("inset"),
     }
-  );
+  )
 
   matchUtilities(
     {
@@ -85,15 +85,15 @@ const typePlugin = plugin(({ addUtilities, matchUtilities, theme }) => {
       supportsNegativeValues: true,
       values: theme("inset"),
     }
-  );
-  addUtilities(utilities);
-});
+  )
+  addUtilities(utilities)
+})
 
 export const carbonPreset = {
   theme: {
     colors: { ...colors.colors, transparent: "transparent", white: "#fff" },
   },
   plugins: [typePlugin],
-};
+}
 
-export default carbonPreset;
+export default carbonPreset

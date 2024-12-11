@@ -1,4 +1,4 @@
-import { RegistryEntry, BASE_URL } from "../schema";
+import { BASE_URL, RegistryEntry } from "../schema"
 
 export const registryEntry: RegistryEntry = {
   name: "chat-01",
@@ -10,4 +10,4 @@ export const registryEntry: RegistryEntry = {
     `${BASE_URL}/chat.json`,
     `${BASE_URL}/carbon-tailwind-preset.json`,
   ],
-};
+}

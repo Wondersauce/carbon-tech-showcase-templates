@@ -1,5 +1,6 @@
-import "@/envConfig";
-import { z } from "zod";
+import "@/envConfig"
+
+import { z } from "zod"
 
 export const blockChunkSchema = z.object({
   name: z.string(),
@@ -12,7 +13,7 @@ export const blockChunkSchema = z.object({
       className: z.string().nullish(),
     })
     .optional(),
-});
+})
 
 const registryItemTypes = [
   "registry:block",
@@ -24,9 +25,9 @@ const registryItemTypes = [
   "registry:style",
   "registry:theme",
   "registry:ui",
-] as const;
+] as const
 
-export const registryItemTypeSchema = z.enum(registryItemTypes);
+export const registryItemTypeSchema = z.enum(registryItemTypes)
 
 export const registryItemFileSchema = z.union([
   z.string(),
@@ -36,7 +37,7 @@ export const registryItemFileSchema = z.union([
     type: registryItemTypeSchema,
     target: z.string().optional(),
   }),
-]);
+])
 
 export const registryItemTailwindSchema = z.object({
   config: z.object({
@@ -44,12 +45,12 @@ export const registryItemTailwindSchema = z.object({
     theme: z.record(z.string(), z.any()).optional(),
     plugins: z.array(z.string()).optional(),
   }),
-});
+})
 
 export const registryItemCssVarsSchema = z.object({
   light: z.record(z.string(), z.string()).optional(),
   dark: z.record(z.string(), z.string()).optional(),
-});
+})
 
 export const registryEntrySchema = z.object({
   name: z.string(),
@@ -66,13 +67,13 @@ export const registryEntrySchema = z.object({
   subcategory: z.string().optional(),
   chunks: z.array(blockChunkSchema).optional(),
   docs: z.string().optional(),
-});
+})
 
-export const registrySchema = z.array(registryEntrySchema);
+export const registrySchema = z.array(registryEntrySchema)
 
-export type RegistryEntry = z.infer<typeof registryEntrySchema>;
+export type RegistryEntry = z.infer<typeof registryEntrySchema>
 
-export type Registry = z.infer<typeof registrySchema>;
+export type Registry = z.infer<typeof registrySchema>
 
 export const blockSchema = registryEntrySchema.extend({
   type: z.literal("registry:block"),
@@ -86,10 +87,11 @@ export const blockSchema = registryEntrySchema.extend({
     .optional(),
   code: z.string(),
   highlightedCode: z.string(),
-});
+})
 
-export type Block = z.infer<typeof blockSchema>;
+export type Block = z.infer<typeof blockSchema>
 
-export type BlockChunk = z.infer<typeof blockChunkSchema>;
+export type BlockChunk = z.infer<typeof blockChunkSchema>
 
-export const BASE_URL = process.env.NEXT_PUBLIC_REGISTRY_URL ?? "http://localhost:3000/registry";
+export const BASE_URL =
+  process.env.NEXT_PUBLIC_REGISTRY_URL ?? "http://localhost:3000/registry"

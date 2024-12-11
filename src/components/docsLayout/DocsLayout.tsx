@@ -1,25 +1,26 @@
-"use client";
-import React, { useState, useEffect } from "react";
+"use client"
+
+import React, { useEffect, useState } from "react"
+import { Notification, Search, Switcher } from "@carbon/icons-react"
 import {
-  Grid,
   Column,
   Content,
+  Grid,
   Header,
   HeaderGlobalAction,
   HeaderGlobalBar,
   HeaderMenu,
+  HeaderMenuButton,
   HeaderMenuItem,
   HeaderName,
   HeaderNavigation,
   SideNav,
-  HeaderMenuButton,
   SideNavItems,
   SideNavMenu,
   SideNavMenuItem,
   SkipToContent,
   Theme,
-} from "@carbon/react";
-import { Search, Notification, Switcher } from "@carbon/icons-react";
+} from "@carbon/react"
 
 const menuItems = [
   { href: "/docs", label: "Installation" },
@@ -29,23 +30,23 @@ const menuItems = [
     label: "Templates",
     items: [{ href: "/docs/templates/chat", label: "Chat" }],
   },
-];
+]
 
 export default function DocsLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const [isSideNavExpanded, setIsSideNavExpanded] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const [isSideNavExpanded, setIsSideNavExpanded] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
   const onClickSideNavExpand = () => {
-    setIsSideNavExpanded((prev) => !prev);
-  };
+    setIsSideNavExpanded((prev) => !prev)
+  }
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    setIsMounted(true)
+  }, [])
 
   return (
     <Theme theme="white">
@@ -76,7 +77,7 @@ export default function DocsLayout({
           <HeaderGlobalAction
             aria-label="App Switcher"
             onClick={() => {
-              console.log("app-switcher click");
+              console.log("app-switcher click")
             }}
             tooltipAlignment="end"
           >
@@ -112,13 +113,13 @@ export default function DocsLayout({
                         </SideNavMenuItem>
                       ))}
                     </SideNavMenu>
-                  );
+                  )
                 }
                 return (
                   <SideNavMenuItem key={item.href} href={item.href}>
                     {item.label}
                   </SideNavMenuItem>
-                );
+                )
               })}
             </SideNavItems>
           </SideNav>
@@ -143,5 +144,5 @@ export default function DocsLayout({
         </Grid>
       </Content>
     </Theme>
-  );
+  )
 }

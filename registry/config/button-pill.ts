@@ -1,4 +1,4 @@
-import { RegistryEntry, BASE_URL } from "../schema";
+import { BASE_URL, RegistryEntry } from "../schema"
 
 export const registryEntry: RegistryEntry = {
   name: "button-pill",
@@ -6,4 +6,4 @@ export const registryEntry: RegistryEntry = {
   files: ["ui/button-pill.tsx"],
   dependencies: ["@carbon/react", "@carbon/icons-react"],
   registryDependencies: [`${BASE_URL}/carbon-tailwind-preset.json`],
-};
+}

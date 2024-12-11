@@ -1,6 +1,7 @@
-import type { Config } from "tailwindcss";
-import typography from "@tailwindcss/typography";
-import { carbonPreset } from "./registry/lib/carbon-tailwind-preset";
+import typography from "@tailwindcss/typography"
+import type { Config } from "tailwindcss"
+
+import { carbonPreset } from "./registry/lib/carbon-tailwind-preset"
 
 export default {
   content: [
@@ -33,4 +34,4 @@ export default {
   },
   presets: [carbonPreset],
   plugins: [typography],
-} satisfies Config;
+} satisfies Config

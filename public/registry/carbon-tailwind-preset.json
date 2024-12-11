@@ -9,8 +9,5 @@
       "target": "components/lib/carbon-tailwind-preset.ts"
     }
   ],
-  "dependencies": [
-    "@carbon/react",
-    "@carbon/icons-react"
-  ]
+  "dependencies": ["@carbon/react", "@carbon/icons-react"]
 }

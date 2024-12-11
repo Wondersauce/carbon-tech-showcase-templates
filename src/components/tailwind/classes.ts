@@ -58,7 +58,7 @@ export const tailwindFonts = [
   "font-fluid-display-02",
   "font-fluid-display-03",
   "font-fluid-display-04",
-];
+]
 
 export const tailwindColorGroups = [
   "black",
@@ -76,7 +76,7 @@ export const tailwindColorGroups = [
   "white",
   "yellow",
   "transparent",
-];
+]
 
 export const tailwindBgColors = [
   "bg-black-100",
@@ -202,4 +202,4 @@ export const tailwindBgColors = [
   "bg-yellow-90",
   "bg-yellow-100",
   "bg-transparent",
-];
+]

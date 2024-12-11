@@ -1,29 +1,33 @@
-import { promises as fs } from "fs";
-import { exec } from "node:child_process";
-import path from "path";
-import { fileURLToPath } from "url";
-import { fontsUtilities, carbonPreset } from "../registry/lib/carbon-tailwind-preset";
+import { promises as fs } from "fs"
+import { exec } from "node:child_process"
+import path from "path"
+import { fileURLToPath } from "url"
 
-const FILE_PATH = "../src/components/tailwind/classes.ts";
+import {
+  carbonPreset,
+  fontsUtilities,
+} from "../registry/lib/carbon-tailwind-preset"
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const FILE_PATH = "../src/components/tailwind/classes.ts"
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const main = async () => {
-  const tailwindFontsClasses = Object.keys(fontsUtilities());
-  const tailwindColorGroups = Object.keys(carbonPreset.theme.colors);
+  const tailwindFontsClasses = Object.keys(fontsUtilities())
+  const tailwindColorGroups = Object.keys(carbonPreset.theme.colors)
   const tailwindColors = Object.entries(carbonPreset.theme.colors).reduce<
     string[]
   >((acc, [key, value]) => {
     if (value && typeof value === "object") {
       Object.entries(value as Record<string, unknown>).forEach(([subKey]) => {
-        acc.push(`${key}-${subKey}`);
-      });
+        acc.push(`${key}-${subKey}`)
+      })
     } else {
-      acc.push(key);
+      acc.push(key)
     }
-    return acc;
-  }, []);
+    return acc
+  }, [])
 
   await fs.writeFile(
     path.join(__dirname, FILE_PATH),
@@ -42,10 +46,10 @@ const main = async () => {
       .join(",\n")}];
     `,
     "utf-8"
-  );
+  )
 
   // Format the file
-  await exec(`npx prettier --write ${path.join(__dirname, FILE_PATH)}`);
-};
+  await exec(`npx prettier --write ${path.join(__dirname, FILE_PATH)}`)
+}
 
-main();
+main()
