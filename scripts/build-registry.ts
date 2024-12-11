@@ -1,21 +1,21 @@
-import { pathToFileURL } from "url";
-import { promises as fs } from "fs";
-import { registryItemFileSchema } from "../registry/schema";
-import { z } from "zod";
-import path from "path";
+import { pathToFileURL } from 'url';
+import { promises as fs } from 'fs';
+import { registryItemFileSchema } from '../registry/schema';
+import { z } from 'zod';
+import path from 'path';
 
-const REGISTRY_BASE_PATH = "registry";
-const REGISTRY_CONFIG = "config";
-const PUBLIC_FOLDER_BASE_PATH = "public/registry";
-const COMPONENT_FOLDER_PATH = "components";
+const REGISTRY_BASE_PATH = 'registry';
+const REGISTRY_CONFIG = 'config';
+const PUBLIC_FOLDER_BASE_PATH = 'public/registry';
+const COMPONENT_FOLDER_PATH = 'components';
 
 type File = z.infer<typeof registryItemFileSchema>;
 const FolderToComponentTypeMap = {
-  block: "registry:block",
-  component: "registry:component",
-  hooks: "registry:hook",
-  ui: "registry:ui",
-  lib: "registry:lib",
+  block: 'registry:block',
+  component: 'registry:component',
+  hooks: 'registry:hook',
+  ui: 'registry:ui',
+  lib: 'registry:lib',
 };
 
 async function writeFileRecursive(filePath: string, data: string) {
@@ -26,7 +26,7 @@ async function writeFileRecursive(filePath: string, data: string) {
     await fs.mkdir(dir, { recursive: true });
 
     // Write the file
-    await fs.writeFile(filePath, data, "utf-8");
+    await fs.writeFile(filePath, data, 'utf-8');
     console.log(`File written to ${filePath}`);
   } catch (error) {
     console.error(`Error writing file`);
@@ -35,13 +35,13 @@ async function writeFileRecursive(filePath: string, data: string) {
 }
 
 const getComponentFiles = async (files: File[]) => {
-  const filesArrayPromises = (files ?? []).map(async (file) => {
-    if (typeof file === "string") {
+  const filesArrayPromises = (files ?? []).map(async file => {
+    if (typeof file === 'string') {
       const filePath = `${REGISTRY_BASE_PATH}/${file}`;
-      const fileContent = await fs.readFile(filePath, "utf-8");
+      const fileContent = await fs.readFile(filePath, 'utf-8');
       return {
         type: FolderToComponentTypeMap[
-          file.split("/")[0] as keyof typeof FolderToComponentTypeMap
+          file.split('/')[0] as keyof typeof FolderToComponentTypeMap
         ],
         content: fileContent,
         path: file,
@@ -82,7 +82,7 @@ const main = async () => {
   for (const element of registryComponents) {
     const component = element;
     const files = component.files;
-    if (!files) throw new Error("No files found for component");
+    if (!files) throw new Error('No files found for component');
 
     const filesArray = await getComponentFiles(files);
 
@@ -101,8 +101,8 @@ const main = async () => {
 
 main()
   .then(() => {
-    console.log("done");
+    console.log('done');
   })
-  .catch((err) => {
+  .catch(err => {
     console.error(err);
   });

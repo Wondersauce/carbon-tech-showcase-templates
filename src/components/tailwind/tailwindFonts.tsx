@@ -1,10 +1,10 @@
-import { tailwindFonts } from "./classes";
+import { tailwindFonts } from './classes';
 
 export default function TailwindFonts() {
   return (
     <>
-      <div className="space-y-4 max-h-[500px] overflow-y-auto">
-        {tailwindFonts.map((className) => (
+      <div className="max-h-[500px] space-y-4 overflow-y-auto">
+        {tailwindFonts.map(className => (
           <div key={className} className={className}>
             {className}
           </div>

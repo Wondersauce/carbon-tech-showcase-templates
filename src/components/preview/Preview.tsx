@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { Launch } from "@carbon/icons-react";
+import { Launch } from '@carbon/icons-react';
 import {
   Button,
   CodeSnippet,
@@ -10,7 +10,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-} from "@carbon/react";
+} from '@carbon/react';
 
 export default function Preview({ previewURL }: { previewURL: string }) {
   return (
@@ -19,9 +19,9 @@ export default function Preview({ previewURL }: { previewURL: string }) {
         <TabList aria-label="List of tabs" fullWidth className="w-full">
           <Tab>Preview</Tab>
           <Tab>Code</Tab>
-          <div className=" w-full flex items-center justify-end">
+          <div className=" flex w-full items-center justify-end">
             <Link href={previewURL} target="_blank">
-              <Button renderIcon={(props) => <Launch size={16} {...props} />}>
+              <Button renderIcon={props => <Launch size={16} {...props} />}>
                 <span className="order-last">Launch</span>
               </Button>
             </Link>
@@ -30,7 +30,7 @@ export default function Preview({ previewURL }: { previewURL: string }) {
         <TabPanels>
           <TabPanel className="border border-solid border-gray-20">
             <div>
-              <iframe className="w-full h-[768px]" src={previewURL} />
+              <iframe className="h-[768px] w-full" src={previewURL} />
             </div>
           </TabPanel>
           <TabPanel>

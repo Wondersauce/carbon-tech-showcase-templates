@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { ButtonPill } from "@/registry/components/ui/button-pill";
+import { ButtonPill } from '@/registry/components/ui/button-pill';
 import {
   ChatContainer,
   ChatEntry,
   ChatMessageUser,
-} from "@/registry/components/ui/chat";
+} from '@/registry/components/ui/chat';
 import {
   AiGenerate,
   ChevronLeft,
@@ -13,7 +13,7 @@ import {
   IbmWatsonDiscovery,
   RightPanelClose,
   SettingsAdjust,
-} from "@carbon/icons-react";
+} from '@carbon/icons-react';
 import {
   AILabel,
   AILabelContent,
@@ -30,10 +30,10 @@ import {
   Stack,
   Theme,
   Tooltip,
-} from "@carbon/react";
+} from '@carbon/react';
 export default function Chat01() {
   return (
-    <div className="bg-blue-10 w-full">
+    <div className="w-full bg-blue-10">
       <Theme theme="g10">
         <Header aria-label="IBM Platform Name">
           <HeaderName href="#" prefix="IBM">
@@ -67,11 +67,11 @@ export default function Chat01() {
         <Content
           id="main-content"
           className="bg-blue-20"
-          style={{ height: "calc(100vh - 47px)" }}
+          style={{ height: 'calc(100vh - 47px)' }}
         >
           <Grid narrow className="h-full">
-            <Column sm={4} md={8} lg={11} className="bg-white rounded-3xl">
-              <div className="h-full w-full flex">
+            <Column sm={4} md={8} lg={11} className="rounded-3xl bg-white">
+              <div className="flex h-full w-full">
                 <div className="border-r border-solid border-gray-30">
                   <Tooltip label="Open">
                     <Button
@@ -83,7 +83,7 @@ export default function Chat01() {
                     />
                   </Tooltip>
                 </div>
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-1 flex-col">
                   <div className="flex items-center justify-end border-b border-solid border-gray-30 p-4">
                     <AILabel>
                       <AILabelContent>
@@ -99,7 +99,7 @@ export default function Chat01() {
                     </AILabel>
                   </div>
 
-                  <div className="flex-shrink flex-auto overflow-y-auto h-0">
+                  <div className="h-0 flex-auto flex-shrink overflow-y-auto">
                     <ChatContainer>
                       <ChatEntry
                         title="watsonx 10:10 AM"
@@ -139,16 +139,16 @@ export default function Chat01() {
                           proceed, please ensure that you have all the necessary
                           information and documents ready.
                         </p>
-                        <div className="grid grid-cols-2 gap-4 !mt-8">
+                        <div className="!mt-8 grid grid-cols-2 gap-4">
                           {[
-                            "Explains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural language",
-                            "Explains and summarizes how your code works in natural language",
-                            "Explains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural language",
-                            "Explains and summarizes how your code works in natural language",
+                            'Explains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural language',
+                            'Explains and summarizes how your code works in natural language',
+                            'Explains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural languageExplains and summarizes how your code works in natural language',
+                            'Explains and summarizes how your code works in natural language',
                           ].map((item, index) => (
                             <div
                               key={index}
-                              className="bg-gray-10 p-4 rounded-2xl"
+                              className="rounded-2xl bg-gray-10 p-4"
                             >
                               <p className="font-body-02">{item}</p>
                               <div className="flex justify-end">
@@ -175,7 +175,7 @@ export default function Chat01() {
               sm={4}
               md={8}
               lg={5}
-              className="bg-white rounded-3xl overflow-y-auto"
+              className="overflow-y-auto rounded-3xl bg-white"
             >
               <div className="p-6">
                 <h2 className="font-fluid-heading-04">

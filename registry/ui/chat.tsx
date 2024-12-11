@@ -1,11 +1,11 @@
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 interface ChatContainerProps {
   children: React.ReactNode;
   className?: string;
 }
 export function ChatContainer({ children, className }: ChatContainerProps) {
-  return <div className={cn(" overflow-y-aut", className)}>{children}</div>;
+  return <div className={cn(' overflow-y-aut', className)}>{children}</div>;
 }
 
 interface ChatEntryProps {
@@ -24,22 +24,22 @@ export function ChatEntry({
 }: ChatEntryProps) {
   return (
     <div
-      className={cn("p-9", className, {
-        "ms-20": alignRight,
-        "me-20": !alignRight,
+      className={cn('p-9', className, {
+        'ms-20': alignRight,
+        'me-20': !alignRight,
       })}
     >
       <div
-        className={cn("flex items-center gap-2 font-label-02 mb-2", {
-          "flex-row-reverse": alignRight,
+        className={cn('mb-2 flex items-center gap-2 font-label-02', {
+          'flex-row-reverse': alignRight,
         })}
       >
         {icon}
         {title}
       </div>
       <div
-        className={cn("font-body-02 space-y-2 flex flex-col", {
-          "text-right items-end": alignRight,
+        className={cn('flex flex-col space-y-2 font-body-02', {
+          'items-end text-right': alignRight,
         })}
       >
         {children}
@@ -56,7 +56,7 @@ export function ChatMessageUser({ children, className }: ChatMessageUserProps) {
   return (
     <div
       className={cn(
-        "bg-blue-20 p-4 rounded-2xl rounded-tr-none w-fit",
+        'w-fit rounded-2xl rounded-tr-none bg-blue-20 p-4',
         className
       )}
     >

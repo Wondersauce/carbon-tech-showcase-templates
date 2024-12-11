@@ -1,6 +1,6 @@
-"use client";
-import { cn } from "@/lib/utils";
-import { CodeSnippet } from "@carbon/react";
+'use client';
+import { cn } from '@/lib/utils';
+import { CodeSnippet } from '@carbon/react';
 
 interface CodeBlockProps {
   className: string;
@@ -9,6 +9,6 @@ interface CodeBlockProps {
 
 export default function CodeBlock({ className, children }: CodeBlockProps) {
   return (
-    <CodeSnippet className={cn("not-prose", className)}>{children}</CodeSnippet>
+    <CodeSnippet className={cn('not-prose', className)}>{children}</CodeSnippet>
   );
 }

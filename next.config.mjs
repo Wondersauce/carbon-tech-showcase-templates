@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
-import createMDX from "@next/mdx";
-import path from "path";
-import remarkGfm from "remark-gfm";
+import createMDX from '@next/mdx';
+import path from 'path';
+import remarkGfm from 'remark-gfm';
 import { fileURLToPath } from 'url';
 
 // Convert import.meta.url to a file path
@@ -16,8 +16,8 @@ const withMDX = createMDX({
 });
 
 export default withMDX({
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   sassOptions: {
-    includePaths: [path.join(__dirname, "node_modules")],
+    includePaths: [path.join(__dirname, 'node_modules')],
   },
 });

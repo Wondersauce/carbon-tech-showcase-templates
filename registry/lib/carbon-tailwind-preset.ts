@@ -1,8 +1,8 @@
-import plugin from "tailwindcss/plugin";
+import plugin from 'tailwindcss/plugin';
 // @ts-expect-error - No type definitions unavailable for @carbon/colors
-import * as colors from "@carbon/colors";
+import * as colors from '@carbon/colors';
 // @ts-expect-error - No type definitions unavailable for @carbon/type
-import * as type from "@carbon/type";
+import * as type from '@carbon/type';
 
 type CarbonStyles = Record<
   string,
@@ -18,9 +18,9 @@ type CarbonStyles = Record<
 
 export const camelToDash = (str: string): string => {
   return str
-    .replace(/([A-Z])|(\d+)/g, "-$&")
+    .replace(/([A-Z])|(\d+)/g, '-$&')
     .toLowerCase()
-    .replace(/^-/, ""); // Remove leading dash if present
+    .replace(/^-/, ''); // Remove leading dash if present
 };
 
 export const fontsUtilities = () => {
@@ -37,10 +37,10 @@ export const fontsUtilities = () => {
     utilities[`.font-${dashKey}`] = {
       ...rest,
       ...(breakpoints?.md && {
-        "@screen md": breakpoints.md,
+        '@screen md': breakpoints.md,
       }),
       ...(breakpoints?.lg && {
-        "@screen lg": breakpoints.lg,
+        '@screen lg': breakpoints.lg,
       }),
     };
   });
@@ -53,37 +53,37 @@ const typePlugin = plugin(({ addUtilities, matchUtilities, theme }) => {
 
   matchUtilities(
     {
-      "inset-block": (value) => ({
+      'inset-block': value => ({
         insetBlock: value,
       }),
-      "inset-inline": (value) => ({
+      'inset-inline': value => ({
         insetInline: value,
       }),
     },
     {
       supportsNegativeValues: true,
-      values: theme("inset"),
+      values: theme('inset'),
     }
   );
 
   matchUtilities(
     {
-      "block-start": (value) => ({
+      'block-start': value => ({
         insetBlockStart: value,
       }),
-      "block-end": (value) => ({
+      'block-end': value => ({
         insetBlockEnd: value,
       }),
-      "inline-start": (value) => ({
+      'inline-start': value => ({
         insetInlineStart: value,
       }),
-      "inline-end": (value) => ({
+      'inline-end': value => ({
         insetInlineEnd: value,
       }),
     },
     {
       supportsNegativeValues: true,
-      values: theme("inset"),
+      values: theme('inset'),
     }
   );
   addUtilities(utilities);
@@ -91,7 +91,7 @@ const typePlugin = plugin(({ addUtilities, matchUtilities, theme }) => {
 
 export const carbonPreset = {
   theme: {
-    colors: { ...colors.colors, transparent: "transparent", white: "#fff" },
+    colors: { ...colors.colors, transparent: 'transparent', white: '#fff' },
   },
   plugins: [typePlugin],
 };

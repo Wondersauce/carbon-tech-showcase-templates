@@ -1,5 +1,5 @@
-"use client";
-import React, { useState, useEffect } from "react";
+'use client';
+import React, { useState, useEffect } from 'react';
 import {
   Grid,
   Column,
@@ -18,16 +18,16 @@ import {
   SideNavMenuItem,
   SkipToContent,
   Theme,
-} from "@carbon/react";
-import { Search, Notification, Switcher } from "@carbon/icons-react";
+} from '@carbon/react';
+import { Search, Notification, Switcher } from '@carbon/icons-react';
 
 const menuItems = [
-  { href: "/docs", label: "Installation" },
-  { href: "/docs/tailwind", label: "Tailwind" },
+  { href: '/docs', label: 'Installation' },
+  { href: '/docs/tailwind', label: 'Tailwind' },
   {
-    href: "/docs/templates",
-    label: "Templates",
-    items: [{ href: "/docs/templates/chat", label: "Chat" }],
+    href: '/docs/templates',
+    label: 'Templates',
+    items: [{ href: '/docs/templates/chat', label: 'Chat' }],
   },
 ];
 
@@ -40,7 +40,7 @@ export default function DocsLayout({
   const [isMounted, setIsMounted] = useState(false);
 
   const onClickSideNavExpand = () => {
-    setIsSideNavExpanded((prev) => !prev);
+    setIsSideNavExpanded(prev => !prev);
   };
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function DocsLayout({
       <Header aria-label="IBM Platform Name">
         <SkipToContent />
         <HeaderMenuButton
-          aria-label={isSideNavExpanded ? "Close menu" : "Open menu"}
+          aria-label={isSideNavExpanded ? 'Close menu' : 'Open menu'}
           onClick={onClickSideNavExpand}
           isActive={isSideNavExpanded}
           aria-expanded={isSideNavExpanded}
@@ -76,7 +76,7 @@ export default function DocsLayout({
           <HeaderGlobalAction
             aria-label="App Switcher"
             onClick={() => {
-              console.log("app-switcher click");
+              console.log('app-switcher click');
             }}
             tooltipAlignment="end"
           >
@@ -98,7 +98,7 @@ export default function DocsLayout({
             tabIndex={-1}
           >
             <SideNavItems>
-              {menuItems.map((item) => {
+              {menuItems.map(item => {
                 if (item.items) {
                   return (
                     <SideNavMenu
@@ -106,7 +106,7 @@ export default function DocsLayout({
                       title={item.label}
                       defaultExpanded
                     >
-                      {item.items.map((subItem) => (
+                      {item.items.map(subItem => (
                         <SideNavMenuItem key={subItem.href} href={subItem.href}>
                           {subItem.label}
                         </SideNavMenuItem>
