@@ -1,0 +1,17 @@
+import Preview from "@/src/components/preview/Preview";
+import CodeBlock from "@/src/components/codeBlock/CodeBlock";
+
+export const metadata = {
+  title: "{{name}} Documentation",
+};
+
+# {{name}}
+
+<Preview previewURL="/demos/{{kebabCase name}}" />
+
+## Installation
+
+<CodeBlock
+  className={"not-prose"}
+  children={`npx shadcn@latest add ${process.env.NEXT_PUBLIC_REGISTRY_URL}/{{kebabCase name}}.json`}
+/>

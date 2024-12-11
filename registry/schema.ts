@@ -1,3 +1,4 @@
+import "@/envConfig";
 import { z } from "zod";
 
 export const blockChunkSchema = z.object({
@@ -13,17 +14,19 @@ export const blockChunkSchema = z.object({
     .optional(),
 });
 
-export const registryItemTypeSchema = z.enum([
-  "registry:style",
-  "registry:lib",
-  "registry:example",
+const registryItemTypes = [
   "registry:block",
   "registry:component",
-  "registry:ui",
+  "registry:example",
   "registry:hook",
-  "registry:theme",
+  "registry:lib",
   "registry:page",
-]);
+  "registry:style",
+  "registry:theme",
+  "registry:ui",
+] as const;
+
+export const registryItemTypeSchema = z.enum(registryItemTypes);
 
 export const registryItemFileSchema = z.union([
   z.string(),
@@ -88,3 +91,5 @@ export const blockSchema = registryEntrySchema.extend({
 export type Block = z.infer<typeof blockSchema>;
 
 export type BlockChunk = z.infer<typeof blockChunkSchema>;
+
+export const BASE_URL = process.env.NEXT_PUBLIC_REGISTRY_URL ?? "http://localhost:3000/registry";
