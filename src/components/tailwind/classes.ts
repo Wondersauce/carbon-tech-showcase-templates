@@ -60,6 +60,29 @@ export const tailwindFonts = [
   "font-fluid-display-04",
 ];
 
+export const tailwindFontsGroups = [
+  "caption",
+  "label",
+  "helper text",
+  "body short",
+  "body long",
+  "code",
+  "heading",
+  "productive heading",
+  "expressive heading",
+  "expressive paragraph",
+  "quotation",
+  "display",
+  "legal",
+  "body compact",
+  "body",
+  "heading compact",
+  "fluid heading",
+  "fluid paragraph",
+  "fluid quotation",
+  "fluid display",
+];
+
 export const tailwindColorGroups = [
   "black",
   "blue",
